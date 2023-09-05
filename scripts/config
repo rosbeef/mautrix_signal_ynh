@@ -93,7 +93,7 @@ set__permissions_in_conf() {
     
     for user in "${arruser[@]}"; do
 	# add it to regex substitution part
-        permissions_regex=${permissions_regex}"\n    \"${user}: \"user\"";
+        permissions_regex=${permissions_regex}"\n    \"${user}\": \"user\"";
     done;
     ;;
     
@@ -103,7 +103,7 @@ set__permissions_in_conf() {
     
     for relay in "${arrrelay[@]}"; do
 	# add it to regex substitution part
-        permissions_regex=${permissions_regex}"\n    \"${relay}: \"relay\"";
+        permissions_regex=${permissions_regex}"\n    \"${relay}\": \"relay\"";
     done;
     ;;
     
@@ -112,7 +112,7 @@ set__permissions_in_conf() {
     
     for admin in "${arradmin[@]}"; do
 	# add it to regex substitution part
-        permissions_regex=${permissions_regex}"\n    \"${admin}: \"admin\"";
+        permissions_regex=${permissions_regex}"\n    \"${admin}\": \"admin\"";
     done;
     ;;
 
