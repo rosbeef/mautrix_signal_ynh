@@ -27,7 +27,7 @@ get__botname() {
 }
 
 get__listuser() {
-    existingUsers=$(grep -- "\".*: user" "$final_path/config.yaml" | sed -r 's/: user//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',') | sed -r 's/,$//'
+    existingUsers=$(grep -- "\".*: user" "$final_path/config.yaml" | sed -r 's/: user//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',' | sed -r 's/,$//')
 
     cat <<EOF
     "$existingUsers"
@@ -35,7 +35,7 @@ get__listuser() {
 }
 
 get__listrelay() {
-    existingRelayUsers=$(grep -- "\".*: relay" "$final_path/config.yaml" | sed -r 's/: relay//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',') | sed -r 's/,$//'
+    existingRelayUsers=$(grep -- "\".*: relay" "$final_path/config.yaml" | sed -r 's/: relay//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',' | sed -r 's/,$//')
 
     cat <<EOF
     "$existingRelayUsers"
@@ -43,7 +43,7 @@ get__listrelay() {
 }
 
 get__listadmin() {
-    existingAdmins=$(grep -- "\".*: admin" "$final_path/config.yaml" | sed -r 's/: admin//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',') | sed -r 's/,$//'
+    existingAdmins=$(grep -- "\".*: admin" "$final_path/config.yaml" | sed -r 's/: admin//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',' | sed -r 's/,$//')
 
     cat <<EOF
     "$existingAdmins"
