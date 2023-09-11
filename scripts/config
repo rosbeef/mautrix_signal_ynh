@@ -27,36 +27,27 @@ get__botname() {
 }
 
 get__listuser() {
-    listuser=$(ynh_app_setting_get --app $app --key listuser)
-    echo "${listuser}"
+    existingUsers=$(grep -- "\".*: user" "$final_path/config.yaml" | sed -r 's/: user//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',') | sed -r 's/,$//'
 
-  # existingUsers=$(grep -- "\".*: user" "$final_path/config.yaml" | sed -r 's/: user//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',')
-
-  #cat <<EOF
-  #"$existingUsers"
-  #EOF
+    cat <<EOF
+    "$existingUsers"
+    EOF
 }
 
 get__listrelay() {
-     listadmin=$(ynh_app_setting_get --app $app --key listadmin)
-    echo "${listrelay}"
+    existingRelayUsers=$(grep -- "\".*: relay" "$final_path/config.yaml" | sed -r 's/: relay//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',') | sed -r 's/,$//'
 
- #existingRelayUsers=$(grep -- "\".*: relay" "$final_path/config.yaml" | sed -r 's/: relay//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',')
-
-  #cat <<EOF
-  #"$existingRelayUsers"
-  #EOF
+    cat <<EOF
+    "$existingRelayUsers"
+    EOF
 }
 
 get__listadmin() {
-    listadmin=$(ynh_app_setting_get --app $app --key listadmin)
-    echo "${listadmin}"
+    existingAdmins=$(grep -- "\".*: admin" "$final_path/config.yaml" | sed -r 's/: admin//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',') | sed -r 's/,$//'
 
- #existingAdmins=$(grep -- "\".*: admin" "$final_path/config.yaml" | sed -r 's/: admin//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',')
-
-  #cat <<EOF
-  #"$existingAdmins"
-  #EOF
+    cat <<EOF
+    "$existingAdmins"
+    EOF
 }
 
 #=================================================
